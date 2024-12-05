@@ -22,10 +22,8 @@ export class PasswordHistoryModalComponent implements OnInit {
   ngOnInit() {
     this.passwordService.getPasswordHistory().subscribe({
       next: (data) => {
-        // Formate as datas
         this.passwordHistory = data.map(item => ({
           password: item.password,
-          // Formate a data para o padrão brasileiro
           date: this.datePipe.transform(item.dateTime, 'dd/MM/yyyy HH:mm:ss') || ''
         }));
       },
